@@ -13,3 +13,18 @@ export const Container = styled.SafeAreaView`
     justify-content: space-between;
     background-color: transparent;
 `;
+
+export const Tracker = styled.View`
+  flex-direction: row;
+  justify-content: space-around;
+  width: 80px;
+`;
+
+export const Circle = styled.View`
+  height: 10px;
+  width: 10px;
+  background-color: ${props => (props.color ? '#fff' : '#a9c3c7')};
+  align-items: center;
+  justify-content: center;
+  border-radius: 100px;
+`;

@@ -12,4 +12,5 @@ export const IconContainer = styled.View`
 
 export const ExpoIcon = styled(AntDesign)`
   font-size: 24px;
+  
 `;
