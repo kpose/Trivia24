@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
 import { Intro } from '../../components';
+
+const animation = require('../../animations/questions.json');
 
 const IntroTwo = () => (
   <Intro
-    sourceOfAnimation="I am the first animation"
+    animation={animation}
     title="Title Two"
     body="Lorem Ipsum"
   />

@@ -4,7 +4,7 @@ export const Container = styled.SafeAreaView`
   flex: 1;
   align-self: center;
   width: 100%;
-  background-color: #7fecfa;
+  background-color: #3490dc;
 `;
 
 export const AnimationView = styled.View`
@@ -28,7 +28,7 @@ export const IntroTitle = styled.Text`
   text-align: center;
   padding: 16px;
   line-height: 30px;
-  color: #393c50;
+  color: #0D0E0E;
 `;
 
 export const IntroText = styled.Text`
@@ -37,5 +37,5 @@ export const IntroText = styled.Text`
   text-align: center;
   padding-top: 32px;
   line-height: 26px;
-  color: #636363;
+  color: #EBD6EF;
 `;

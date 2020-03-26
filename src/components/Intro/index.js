@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
+import LottieView from 'lottie-react-native';
 import {
   Container,
   IntroText,
@@ -8,10 +8,15 @@ import {
   DescriptionView,
 } from './styledComponents';
 
-const Intro = ({ sourceOfAnimation, title, body }) => (
+const Intro = ({ animation, title, body }) => (
   <Container>
     <AnimationView>
-      <Text>{sourceOfAnimation}</Text>
+      <LottieView
+        source={animation}
+        autoPlay
+        style={{ width: 400, height: 350 }}
+        resizeMode="cover"
+      />
     </AnimationView>
     <DescriptionView>
       <IntroTitle>{title}</IntroTitle>
