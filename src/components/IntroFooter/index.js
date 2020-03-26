@@ -1,17 +1,17 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { TouchableOpacity } from 'react-native';
+import { Container } from './styledComponents';
+import Icon from '../Icon';
 
-const styles = StyleSheet.create({
-  container: {
-    height: 130,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 const IntroFooter = () => (
-  <TouchableOpacity style={styles.container}>
-    <Text>Hi I am the footer</Text>
-  </TouchableOpacity>
+  <Container>
+    <TouchableOpacity>
+      <Icon iconName="home" />
+    </TouchableOpacity>
+    <TouchableOpacity>
+      <Icon iconName="arrowright" />
+    </TouchableOpacity>
+  </Container>
 );
 export default IntroFooter;
