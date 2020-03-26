@@ -1,7 +1,7 @@
 import React from 'react';
 import { Intro } from '../../components';
 
-const animation = require('../../animations/enlightened.json');
+const animation = require('../../animations/groovy.json');
 
 const IntroThree = () => (
   <Intro

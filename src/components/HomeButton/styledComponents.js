@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 export const Container = styled.SafeAreaView`
   flex: 1;
   align-self: center;
-  width: 100%;
+  width: 40%;
   background-color: #3490dc;
 `;
  
@@ -29,13 +29,4 @@ export const IntroTitle = styled.Text`
   padding: 16px;
   line-height: 30px;
   color: #0D0E0E;
-`;
-
-export const IntroText = styled.Text`
-  font-size: 18px;
-  font-weight: 500;
-  text-align: center;
-  padding-top: 32px;
-  line-height: 26px;
-  color: #EBD6EF;
 `;
