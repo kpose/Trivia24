@@ -1,19 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-
+import { Intro } from '../../components';
 
 const IntroOne = () => (
-  <View style={styles.container}>
-    <Text>IntroOne</Text>
-  </View>
+  <Intro
+    sourceOfAnimation="I am the first animation"
+    title="Title One"
+    body="Lorem Ipsum"
+  />
 );
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  });
 
 export default IntroOne;
