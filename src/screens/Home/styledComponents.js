@@ -8,11 +8,11 @@ export const Container = styled.SafeAreaView`
   
 `;
 
-export const Text = styled.Text`
+export const H1 = styled.Text`
   font-size: 24px;
 `;
 
-export const Tap = styled.TouchableOpacity`
+export const ShadowBox = styled.TouchableOpacity`
   margin:12px;
   padding: 12px;
   height: 250px;
