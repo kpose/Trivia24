@@ -1,0 +1,15 @@
+{
+  "name": "trivia24",
+  "version": "1.0.0",
+  "description": "A trivia app written with react native",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Jude Ganihu",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "socket.io": "^2.3.0"
+  }
+}
