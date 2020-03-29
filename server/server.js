@@ -47,3 +47,33 @@ function calculateLeaderBoard() {
     });
     return playersArray;
 }
+
+//player message handlers
+
+io.on('connection', io => {
+    console.log("Connection established with a client");
+
+    io.emit("connected", { });
+
+    //validate player
+    io.on('validatePlayer', inData => {
+        try {
+            const responseObject = { inProgress : inProgress,
+            gameData : newGameData(), leaderboard: calculateLeaderBoard(),
+            asked: numberAsked
+        };
+        responseObject.playerID = `T24_${new Date().getTime()}`;
+        for (const playerID in players) {
+            if (players.hasOwnProperty(playerID)) {
+                if(inData.playerName === players[playerID].playerName) {
+                    responseObject.gameData.playerName += `_${new Date().getTime()}`;
+                }
+            }
+        }
+        players[responseObject.playerID] = responseObject.gameData;
+        io.emit('validatePlayer', responseObject);
+        } catch (inException) {
+            console.log(`${inException}`);
+        }
+    })
+});
