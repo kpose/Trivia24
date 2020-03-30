@@ -49,7 +49,6 @@ function calculateLeaderBoard() {
 }
 
 //player message handlers
-
 io.on('connection', io => {
     console.log("Connection established with a client");
 
