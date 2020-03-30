@@ -75,4 +75,43 @@ io.on('connection', io => {
             console.log(`${inException}`);
         }
     })
+
+    //submit answers
+    io.on("submitAnswer", inData => {
+        try {
+            const gameData = players[inData.playerID];
+            let correct = false;
+            gameData.answered++;
+
+            if (questions.answer === inData.answer) {
+                players[inData.playerID].right++;
+                players[inData.playerID].wrong--;
+
+                const time = new Date().getTime() - questionStartTime;
+                gameData.totalTime = gameData.totalTime + time;
+                if (time > gameData.slowest) {
+                    gameData.slowest = time;
+                }
+                if (time < gameData.fastest) {
+                    gameData.fastest = time;
+                }
+                gameData.average = Math.trunc(gameData.totalTime / numberAsked);
+
+                const maxTimeAllowed = 15;
+                gameData.points = gameData.points + (maxTimeAllowed * 4);
+                gameData.points = gameData.points - Math.min(Math.max(
+                    Math.trunc(time / 250), 0), (maxTimeAllowed * 4
+                ));
+                gameData.points = gameData.points + 10;
+                correct = true;
+            }
+            io.emit("answerOutcome", { correct: correct, gameData : gameData,
+                asked : numberAsked, leaderboard: calculateLeaderBoard()
+            });
+        } catch (inException) {
+            console.log(`${inException}`);
+        }
+    });
+
+    
 });
