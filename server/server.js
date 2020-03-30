@@ -179,5 +179,45 @@ io.on("adminNextQuestion", () => {
     }
 });
 
+//admin ends game
+io.on("adminEndGame", () => {
 
+    try {
+
+      console.log("adminEndGame");
+
+      // Show a message if the admin tried to end the game, but there's no game in progress.
+      if (!inProgress) {
+        io.emit("adminMessage", { msg : "There is no game in progress" });
+        return;
+      }
+
+      // Tell all the players about the end of the game and the final standings.
+      const leaderboard = calculateLeaderboard();
+      // noinspection JSUnresolvedVariable
+      io.broadcast.emit("endGame", { leaderboard : leaderboard });
+
+      // Reset variables.
+      inProgress = false;
+      questions = null;
+      question = null;
+      questionForPlayers = null;
+      questionStartTime = null;
+      numberAsked = 0;
+      for (const playerID in players) {
+        if (players.hasOwnProperty(playerID)) {
+          const playerName = players[playerID].playerName;
+          players[playerID] = newGameData();
+          players[playerID].playerName = playerName;
+        }
+      }
+
+      // Tell the admin that the game has ended.
+      io.emit("adminMessage", { msg : "Game ended" });
+
+    // Handle any unexpected problems, ensuring the server doesn't go down.
+    } catch (inException) {
+      console.log(`${inException}`);
+    }
+  });
 });
