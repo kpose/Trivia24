@@ -144,6 +144,40 @@ io.on('adminNewGame', () => {
     }
 });
 
+//Admin asks next question
+io.on("adminNextQuestion", () => {
+    try{
+        if (!inProgress) {
+            io.emit("adminMessage", { msg : "There are no more questions" });
+            return;
+        }
+        for (const playerID in players) {
+            if (players.hasOwnProperty(playerID)) {
+                players[playerID].wrong++
+            }
+        }
 
-    
+        let choice = Math.floor(Math.random() * questions.length);
+        question = questions.splice(choice, 1)[0];
+        questionsForPlayers = { question: question.question, answers : [ ] };
+
+        const decoys = question.decoy.slice(0);
+        for (let i = 0;  i < 5; i++) {
+            let choice = Math.floor(Math.random() * decoys.length);
+            questionForPlayers.answers.push(decoys.splice(choice, 1)[0]);
+        }
+
+        questionForPlayers.answers.push(question.answer);
+        questionForPlayers.answers = lodash.shuffle(questionForPlayers.answers);
+        numberAsked++;
+        questionStartTime = new Date().getTime();
+
+        io.broadcast.emit('nextQuestion', questionForPlayers);
+        io.emit("adminMessage", { msg: "Question in play" });
+    } catch (inException) {
+        console.log(`${inException}`);
+    }
+});
+
+
 });
