@@ -112,6 +112,38 @@ io.on('connection', io => {
             console.log(`${inException}`);
         }
     });
+//admin starts new game
+io.on('adminNewGame', () => {
+    try {
+
+        question = null;
+        questionForPlayers = null;
+        numberAsked = 0;
+        inProgress = true;
+
+        questions = (JSON.parse(fs.readFileSync('questions.json', 'utf8'))).question;
+
+        for (const playerID in players)  {
+            if (players.hasOwnProperty(playerID)) {
+                const playerName = players[playerID].playerName;
+                players[playerID] = newGameData();
+                players[playerID].playerName = playerName;
+            }
+        }
+        const responseObject = { inProgress: inProgress, question : null,
+            playerID : null, gameDta : newGameData(), asked: numberAsked,
+            leaderboard: calculateLeaderBoard()
+        };
+        const gd = newGameData();
+        gd.asked = 0;
+
+        io.broadcast.emit('newGame', responseObject);
+        io.emit("adminMessage", { msg: "Game on!! See you at the Leaderboard" });
+    } catch (inException) {
+        console.log(`${inException}`);
+    }
+});
+
 
     
 });
