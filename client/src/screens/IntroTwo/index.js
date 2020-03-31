@@ -1,5 +1,5 @@
 import React from 'react';
-import { Intro } from '../../components';
+import { Intro } from '../../components/walkthrough';
 
 const animation = require('../../animations/questions.json');
 

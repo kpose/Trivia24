@@ -1,5 +1,5 @@
 import React from 'react';
-import { IntroFooter } from '../../components';
+import { IntroFooter } from '../../components/walkthrough';
 
 const footer = () => <IntroFooter />;
 
