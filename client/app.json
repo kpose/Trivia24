@@ -1,8 +1,9 @@
 {
   "expo": {
-    "name": "Blank Template",
+    "name": "Trivia24",
     "slug": "Trivia24",
     "privacy": "public",
+    "description": "React Native Trivia",
     "sdkVersion": "36.0.0",
     "platforms": [
       "ios",
