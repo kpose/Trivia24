@@ -1,4 +1,4 @@
-export const initialState = {
+export default initialState = {
 
     //data that the leaderboard screen
     leaderboard: { 
