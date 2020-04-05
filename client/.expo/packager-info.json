@@ -1,9 +1,9 @@
 {
+  "expoServerNgrokUrl": "https://hd-ii2.kpose.client.exp.direct",
+  "packagerNgrokUrl": "https://packager.hd-ii2.kpose.client.exp.direct",
+  "ngrokPid": 4072,
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 13748,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "packagerPid": 13032
 }
