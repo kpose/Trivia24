@@ -2,7 +2,6 @@ import React from 'react';
 import LottieView from 'lottie-react-native';
 import styled from 'styled-components/native';
 
-
  
 const continueAnimation = require('../animations/continue.json');
 const animation = require('../animations/welcome.json')
@@ -36,8 +35,6 @@ function  Welcome(props) {
 }
 
 export default Welcome; 
-
-
 
 
 
