@@ -1,6 +1,8 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import styled from 'styled-components/native';
+import * as MailComposer from 'expo-mail-composer';
+
 
 const styles = StyleSheet.create({
 
@@ -73,6 +75,13 @@ export const H1 = styled.Text`
 
 export default class AboutScreen extends React.Component {
 
+  sendMail() {
+    MailComposer.composeAsync({
+      recipients: ['ganihujude@gmail.com'],
+      subject: 'Hello Jude',
+    });
+  }
+
   constructor(inProps) {
 
     super(inProps);
@@ -98,7 +107,7 @@ export default class AboutScreen extends React.Component {
         <View style={styles.textContainer}>
           <Text style={styles.textAuthor}>By: Jude Ganihu</Text>
         </View>
-        <ShadowBox>
+        <ShadowBox onPress= {this.sendMail}>
           <H1>Send Me A Mail</H1>
           </ShadowBox>
         <View style={styles.spacer} />
