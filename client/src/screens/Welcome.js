@@ -28,8 +28,8 @@ function  Welcome(props) {
             autoPlay
             resizeMode="cover"
         />
+        <H1>Enter Game</H1>
      </ShadowBox>
-     <H1>Enter Game</H1>
   </Container>
   )
 }
@@ -96,6 +96,8 @@ export const ShadowBox = styled.TouchableOpacity`
   border-radius: 20px;
   shadow-opacity: 0.8;
   shadow-radius: 30px;
+  justify-content: center;
+  align-items: center;
 `;
 
 

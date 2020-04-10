@@ -42,25 +42,25 @@ function MainNavigator() {
       }}
       />
 
-      <Tab.Screen
-        name="About"
-        component={AboutScreen}
-        options={{
-            tabBarIcon: ({ focused, color, size }) => (
-                <Icon
-                    name="map"
-                    size={size ? size : 24}
-                    color={focused ? color : "#222222"}
-                    focused={focused}
-                    color={color}
-                />
-            )
-      }}
-      />
-
     <Tab.Screen
             name="Info"
             component={InfoScreen}
+            options={{
+                tabBarIcon: ({ focused, color, size }) => (
+                    <Icon
+                        name="map"
+                        size={size ? size : 24}
+                        color={focused ? color : "#222222"}
+                        focused={focused}
+                        color={color}
+                    />
+                )
+        }}
+        />
+
+    <Tab.Screen
+            name="About"
+            component={AboutScreen}
             options={{
                 tabBarIcon: ({ focused, color, size }) => (
                     <Icon
