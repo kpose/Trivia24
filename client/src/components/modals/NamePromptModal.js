@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, View } from "react-native";
+import { Modal, StyleSheet, View } from "react-native";
 import styled from 'styled-components/native';
 import { Button, Item, Input, Label, Switch, Text } from "native-base";
 import { connect } from "react-redux";
@@ -8,36 +8,38 @@ import { setPlayerName, setIsAdmin } from "../../state/actions";
 import store from "../../state/store";
 
 
-export const outsideContainer = styled.View`
+export const OutsideContainer = styled.View`
   flex: 1;
   align-items: center;
   margin: 20px;
   justify-content: center;
+  
 `;
 
-export const headingContainer = styled.View`
+export const HeadingContainer = styled.View`
     height : 100px;
     justify-content : center;
+    
 `;
 
-export const headingText = styled.Text`
+export const HeadingText = styled.Text`
     font-size : 20px;
     font-weight : bold;
 `;
 
-export const inputFieldContainer = styled.View`
+export const InputFieldContainer = styled.View`
     flex : 1;
     justify-content : center;
     align-self : stretch;
 `;
 
-export const switchContainer = styled.View`
+export const SwitchContainer = styled.View`
     margin-top : 40px;
     justify-content : center;
     flex-direction : row;
 `;
 
-export const buttonContainer = styled.View`
+export const ButtonContainer = styled.View`
     height : 80px;
     justify-content : center;
     align-self : stretch;
@@ -56,11 +58,13 @@ class NamePromptModal extends React.Component {
         visible={this.props.isVisible}
         animationType={"slide"}
         onRequestClose={ () => { } }>
-        <outsideContainer>
-          <headingContainer>
-            <headingText>Hello, new player!</headingText>
-          </headingContainer>
-          <inputFieldContainer>
+        <OutsideContainer>
+          <HeadingContainer>
+            <HeadingText>
+              <Text>Hello, new player!</Text>
+            </HeadingText>
+          </HeadingContainer>
+          <InputFieldContainer>
             <Item floatingLabel>
               <Label>Please enter your name</Label>
               <Input
@@ -69,7 +73,7 @@ class NamePromptModal extends React.Component {
                 }
               />
             </Item>
-            <switchContainer>
+            <SwitchContainer>
               <View>
                 <Switch
                   value={this.props.isAdmin}
@@ -81,12 +85,12 @@ class NamePromptModal extends React.Component {
               <View style={{ paddingLeft : 10 }}>
                 <Text>I am the admin</Text>
               </View>
-            </switchContainer>
-          </inputFieldContainer>
-          <View style={styles.buttonContainer}>
+            </SwitchContainer>
+          </InputFieldContainer>
+          <ButtonContainer>
             <Button block onPress={CoreCode.startup}><Text>Ok</Text></Button>
-          </View>
-        </outsideContainer>
+          </ButtonContainer>
+        </OutsideContainer>
       </Modal>
     );
   } 

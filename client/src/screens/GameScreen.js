@@ -16,10 +16,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#ebebeb'
+    backgroundColor: '#1F2026'
   },
   text: {
-    color: '#101010',
+    color: '#ffffff',
     fontSize: 24,
     fontWeight: 'bold'
 }

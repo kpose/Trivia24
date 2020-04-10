@@ -15,12 +15,13 @@ function MainNavigator() {
         <Tab.Navigator
             tabBarOptions={{
                 activeTintColor: "#02539a",
-                inactiveTintColor: "#222222"
+                inactiveTintColor: "#BDABA5"
         }}
         tabBar={props => (
         <TabBar
-            activeColors={"#02539a"}
-            activeTabBackgrounds={"#a0b7d5"}
+            activeColors={"#ffffff"}
+            activeTabBackgrounds={"#30735E"}
+            tabBarBackground={'#20261F'}
             {...props}
         />
         )}
