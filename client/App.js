@@ -27,5 +27,4 @@ export default class App extends React.Component {
     store.dispatch(showHideModal("namePrompt", true));
   };
 
-
 }

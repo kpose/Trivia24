@@ -108,7 +108,7 @@ export default class AboutScreen extends React.Component {
           <Text style={styles.textAuthor}>By: Jude Ganihu</Text>
         </View>
         <ShadowBox onPress= {this.sendMail}>
-          <H1>Send Me A Mail</H1>
+          <H1>Get In Touch</H1>
           </ShadowBox>
         <View style={styles.spacer} />
         
