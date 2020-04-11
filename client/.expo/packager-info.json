@@ -1,9 +1,9 @@
 {
+  "expoServerNgrokUrl": "https://uk-sei.kpose.client.exp.direct",
+  "packagerNgrokUrl": "https://packager.uk-sei.kpose.client.exp.direct",
+  "ngrokPid": 1532,
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 9576,
-  "expoServerNgrokUrl": "https://37-ihd.kpose.client.exp.direct",
-  "packagerNgrokUrl": "https://packager.37-ihd.kpose.client.exp.direct",
-  "ngrokPid": 428
+  "packagerPid": 7448
 }

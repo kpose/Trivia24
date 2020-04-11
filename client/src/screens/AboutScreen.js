@@ -79,7 +79,6 @@ export default class AboutScreen extends React.Component {
     MailComposer.composeAsync({
       recipients: ['ganihujude@gmail.com'],
       subject: 'Hello Jude',
-      body: 'To whom it may concern:'
     });
   }
 
@@ -108,7 +107,7 @@ export default class AboutScreen extends React.Component {
         <View style={styles.textContainer}>
           <Text style={styles.textAuthor}>By: Jude Ganihu</Text>
         </View>
-        <ShadowBox onPress={this.sendMail}>
+        <ShadowBox onPress= {this.sendMail}>
           <H1>Send Me A Mail</H1>
           </ShadowBox>
         <View style={styles.spacer} />
