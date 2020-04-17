@@ -9,7 +9,7 @@ class InfoScreen extends React.Component {
   constructor(inProps) {
     super(inProps);
 
-  } 
+  }  
   render() {
 
     return (
