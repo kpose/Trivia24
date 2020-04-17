@@ -89,7 +89,7 @@ export const H1 = styled.Text`
 
 export const ShadowBox = styled.TouchableOpacity`
   margin:20px;
-  height: 50px;
+  height: 70px;
   width: 200px;
   border-color: #ddd;
   background: #e6ebf0;

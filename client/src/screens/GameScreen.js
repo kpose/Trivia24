@@ -1,26 +1,36 @@
-import React from 'react'
-import { StyleSheet, View, Text } from 'react-native'
+import * as React from 'react'
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
+import GameHomeScreen from './GameScreen-Home';
+import GameQuestionScreen from './GameScreen-Question';
+import GameLeaderboardScreen from './GameScreen-Leaderboard';
+
+const Stack = createStackNavigator()
 
 function GameScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Game Screen</Text>
-    </View>
-  )
+      <Stack.Navigator 
+            initialRouteName='GameHomeScreen'
+            screenOptions={{
+                gestureEnabled: true,
+                headerShown: false
+          }}>
+        <Stack.Screen 
+            name='GameHomeScreen' 
+            component={GameHomeScreen} 
+        />
+
+        <Stack.Screen
+            name='GameLeaderboardScreen'
+            component={GameLeaderboardScreen}
+        />
+
+        <Stack.Screen
+            name='GameQuestionScreen'
+            component={GameQuestionScreen}
+        />
+      </Stack.Navigator>      
+  );
 }
 
 export default GameScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#1F2026'
-  },
-  text: {
-    color: '#ffffff',
-    fontSize: 25,
-    fontWeight: 'bold'
-}
-})

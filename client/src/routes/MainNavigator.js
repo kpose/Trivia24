@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { TabBar } from "react-native-animated-nav-tab-bar";
 import Icon from 'react-native-vector-icons/Feather';
@@ -12,7 +13,7 @@ const Tab = createBottomTabNavigator();
 
 function MainNavigator() {
   return (
-        <Tab.Navigator
+            <Tab.Navigator
             tabBarOptions={{
                 activeTintColor: "#02539a",
                 inactiveTintColor: "#BDABA5"
