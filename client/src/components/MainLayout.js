@@ -4,6 +4,8 @@ import MainNavigator from '../routes/MainNavigator';
 
 
 import NamePromptModal from "./modals/NamePromptModal";
+import EndGameModal from "./modals/EndGameModal";
+import AdminModal from "./modals/AdminModal";
 
 
 const styles = StyleSheet.create({
@@ -24,6 +26,8 @@ export default class MainLayout extends React.Component {
     return (
       <View style={styles.outerContainer}>
         <NamePromptModal />
+        <EndGameModal />
+        <AdminModal />
         <MainNavigator />
       </View>
     );

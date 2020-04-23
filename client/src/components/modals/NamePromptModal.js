@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, StyleSheet, View } from "react-native";
+import { Modal, View } from "react-native";
 import styled from 'styled-components/native';
 import { Button, Item, Input, Label, Switch, Text } from "native-base";
 import { connect } from "react-redux";
@@ -61,7 +61,7 @@ class NamePromptModal extends React.Component {
         <OutsideContainer>
           <HeadingContainer>
             <HeadingText>
-              <Text>Hello, new player!</Text>
+              <Text>Hello, Champion!</Text>
             </HeadingText>
           </HeadingContainer>
           <InputFieldContainer>

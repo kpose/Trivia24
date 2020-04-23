@@ -2,7 +2,7 @@ import * as React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import GameHomeScreen from './GameScreen-Home';
 import GameQuestionScreen from './GameScreen-Question';
-import GameLeaderboardScreen from './GameScreen-Leaderboard';
+import {GameLeaderboardScreen} from './GameScreen-Leaderboard';
 
 const Stack = createStackNavigator()
 
