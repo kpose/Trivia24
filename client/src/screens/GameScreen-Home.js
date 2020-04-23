@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 import CoreCode from '../CoreCode';
 
 const winner = require('../animations/winner.json');
-const challenge = require('../animations/challange.json');
+const challenge = require('../animations/challenge.json');
 
 
 export default class GameHomeScreen extends React.Component {

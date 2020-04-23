@@ -3,14 +3,8 @@ import { FlatList, WebView, StyleSheet, Text, View } from "react-native";
 import { connect } from "react-redux";
 import store from "../state/store";
 
-
-/**
- * Styles for this component.
- *
- */
 const styles = StyleSheet.create({
 
-  /* Style for outer (main) container view. */
   outerContainer : {
     flex : 1,
     alignItems : "stretch",
@@ -18,20 +12,18 @@ const styles = StyleSheet.create({
     marginTop : 50
   },
 
-  /* Style for the screen heading container. */
   headingContainer : {
     height : 150,
     justifyContent : "center",
     alignSelf : "center"
   },
 
-  /* Style for the screen heading text. */
   headingText : {
     fontSize : 34,
     fontWeight : "bold"
   },
 
-  /* Style for the list. */
+
   listContainer : {
     flex : .6,
     marginLeft : 20,
@@ -42,22 +34,17 @@ const styles = StyleSheet.create({
     padding : 10
   },
 
-  /* Style for the AwaitingQuestion container. */
   awaitingQuestionContainer : {
     flex : .4
   },
 
-  /* Style for the awaiting question text WebView (show just content). */
   awaitingQuestionWebView : {
     backgroundColor : "transparent"
   }
 
-}); /* End stylesheet. */
+});
 
 
-/**
- * Styles for the spinning Awaiting Question text.
- */
 const awaitingQuestionSpinStyles = `
 .spinText {
   animation-name : spin, depth;
@@ -83,42 +70,26 @@ const awaitingQuestionSpinStyles = `
 }
 `;
 
-/**
- * HTML content for the WebView for the spinning Awaiting Question text.
- */
+
 const awaitingQuestionHTML = `
 <style>${awaitingQuestionSpinStyles}</style>
-<div class="spinText">Awaiting Question</div>
+<div class="spinText">Awaiting Question From Admin</div>
 `;
 
 
-/**
- * GameLeaderboardScreen class.
- */
 class GameLeaderboardScreen extends React.Component {
 
-
-  /**
-   * Constructor.
-   */
   constructor(inProps) {
-
     super(inProps);
-
-  } /* End constructor. */
-
-
-  /**
-   * Component render().
-   */
+  } 
   render() {
-
     return (
       <View style={styles.outerContainer}>
         <View style={styles.headingContainer}>
           <Text style={styles.headingText}>Current Leaderboard</Text>
         </View>
         <View style={styles.listContainer}>
+
           <FlatList
             data={this.props.listData}
             keyExtractor={ (inItem) => inItem.playerID }
@@ -146,20 +117,16 @@ class GameLeaderboardScreen extends React.Component {
       </View>
     );
 
-  } /* End render(). */
+  } 
 
 
-} /* End class. */
+} 
 
 
-/**
- * Function to map state to Component props.
- */
 const mapStateToProps = (inState) => {
 console.log("inState", inState);
   return { listData : inState.leaderboard.listData };
 };
 
 
-// Export components.
 exports.GameLeaderboardScreen = connect(mapStateToProps)(GameLeaderboardScreen);
