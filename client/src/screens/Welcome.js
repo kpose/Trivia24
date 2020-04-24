@@ -1,6 +1,6 @@
 import React from 'react';
 import LottieView from 'lottie-react-native';
-import styled from 'styled-components/native';
+import styled from 'styled-components/native'; 
 
  
 const continueAnimation = require('../animations/continue.json');
@@ -82,7 +82,7 @@ export const IntroText = styled.Text`
 
 export const H1 = styled.Text`
   font-size: 24px;
-  color: #101010;
+  color: #101010
   font-size: 24px;
   font-weight: bold;
 `;
