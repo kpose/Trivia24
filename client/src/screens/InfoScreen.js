@@ -9,14 +9,14 @@ class InfoScreen extends React.Component {
   constructor(inProps) {
     super(inProps);
 
-  } 
+  }  
   render() {
 
     return (
-      <View  style={{backgroundColor: 'red'}}>
+      <View style={styles.outerContainer}>
 
         <View style={styles.identificationCardContainer}>
-          <Card>
+          <Card transparent>
             <CardItem header>
               <Text style={styles.headerText}>Identification</Text>
             </CardItem>
@@ -95,12 +95,11 @@ const styles = StyleSheet.create({
 
   outerContainer : {
     justifyContent : "center",
-    marginTop : 0,
+    marginTop : 50,
     marginLeft : 20,
-    marginRight : 20,
-   
-    
+    marginRight : 20
   },
+
 
   identificationCardContainer : {
     height : 150,
@@ -118,6 +117,7 @@ const styles = StyleSheet.create({
     color : "red"
   },
 
+
   fieldContainer : {
     flexDirection : "row"
   },
@@ -127,6 +127,7 @@ const styles = StyleSheet.create({
     width : 100,
     fontWeight : "bold"
   },
+
 
   fieldSpacing : {
     marginBottom : 12

@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Modal, Text, View } from "react-native";
+import { Button, Modal, Text, StyleSheet, View, TouchableOpacity } from "react-native";
 import styled from 'styled-components/native';
 import { connect } from "react-redux";
 import CoreCode from "../../../src/CoreCode";
@@ -8,8 +8,8 @@ import CoreCode from "../../../src/CoreCode";
 export const OuterContainer = styled.View`
   flex: 1;
   align-items: center;
-  margin: 50px;
   justify-content: center;
+  background-color: #1F2026;
   
 `;
 
@@ -17,6 +17,7 @@ export const HeadingText = styled.Text`
   font-size: 40px;
   font-weight: bold;
   margin: 50px; 
+  color: #fff;
 `;
 
 export const ButtonContainer = styled.View`
@@ -27,12 +28,58 @@ export const CurrentStatusContainer = styled.View`
   margin: 50px;
 `;
 
-export const CurrentStatusText = styled.Text`
-  font-size: 20px;
-  font-weight: bold;
-  color: red;
+export const NewGame = styled.TouchableOpacity`
+  margin:20px;
+  height: 90px;
+  width: 350px;
+  border-color: #ddd;
+  background: #9acd32;
+  border-radius: 20px;
+  shadow-opacity: 0.8;
+  shadow-radius: 30px;
+  justify-content: center;
+  align-items: center;
 `;
 
+export const NextQuestion = styled.TouchableOpacity`
+  margin:20px;
+  height: 90px;
+  width: 350px;
+  border-color: #ddd;
+  background: #8E44AD; 
+  border-radius: 20px;
+  shadow-opacity: 0.8;
+  shadow-radius: 30px;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const EndGame = styled.TouchableOpacity`
+  margin:20px;
+  height: 90px;
+  width: 350px;
+  border-color: #ddd;
+  background: #D23727;
+  border-radius: 20px;
+  shadow-opacity: 0.8;
+  shadow-radius: 30px;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const H1 = styled.Text`
+  font-size: 20px;
+  color: #101010;
+  font-weight: bold;
+`;
+
+const styles = StyleSheet.create({
+  currentStatusText : {
+    fontSize : 20,
+    fontWeight : "bold",
+    color : "#F1C40F"
+  }
+});
 
 
 class AdminModal extends React.Component {
@@ -49,43 +96,38 @@ class AdminModal extends React.Component {
         animationType={"slide"}
         onRequestClose={ () => { } }
       >
-        <OutsideContainer>
+        <OuterContainer>
           <HeadingText>
             <Text>Admin</Text>
           </HeadingText>
-          <ButtonContainer>
-            <Button title="New Game"
-              onPress={ () => {
+          <NewGame onPress={ () => {
                 CoreCode.io.emit("adminNewGame", {});
-              } }
-            />
-          </ButtonContainer>
-          <ButtonContainer>
-            <Button title="Next Question"
-              onPress={ () => {
+              } }> 
+              <H1>New Game</H1>
+          </NewGame>
+
+          <NextQuestion onPress={ () => {
                 CoreCode.io.emit("adminNextQuestion", {});
-              } }
-            />
-          </ButtonContainer>
-          <ButtonContainer>
-            <Button title="End Game"
-              onPress={ () => {
+              } }>
+            <H1>Next Question</H1>
+          </NextQuestion>
+
+          <EndGame onPress={ () => {
                 CoreCode.io.emit("adminEndGame", {});
-              } }
-            />
-          </ButtonContainer>
+              } }>
+            <H1>End Game</H1>
+          </EndGame>
+
           <CurrentStatusContainer>
             <Text style={styles.currentStatusText}>
               Current Status: {this.props.currentStatus}
             </Text>
           </CurrentStatusContainer>
-        </OutsideContainer>
+        </OuterContainer>
       </Modal>
     );
 
   } 
-
-
 } 
 
 
@@ -97,3 +139,5 @@ const mapStateToProps = (inState) => {
 };
 
 export default connect(mapStateToProps)(AdminModal);
+
+
