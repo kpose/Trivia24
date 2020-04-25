@@ -13,7 +13,7 @@ function WelcomeStackNavigator() {
       <Stack.Navigator 
             initialRouteName='Welcome'
             screenOptions={{
-                gestureEnabled: true,
+                gestureEnabled: false,
                 headerShown: false
           }}>
         <Stack.Screen 

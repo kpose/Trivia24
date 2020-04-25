@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import CoreCode from "../CoreCode";
 import { answerButtonHighlight } from "../state/actions";
 import store from "../state/store";
+import styled from 'styled-components/native';
 
 class GameQuestionScreen extends React.Component {
 
@@ -13,13 +14,14 @@ class GameQuestionScreen extends React.Component {
   }
   render() {
     return (
-      <View style={styles.outerContainer}>
-        <View style={styles.questionContainer}>
+      <OuterContainer>
+        <QuestionContainer>
           <RNText style={styles.question}>{this.props.question}</RNText>
-        </View>
-        <View style={styles.answerButtonsContainer}>
+        </QuestionContainer>
+        <AnswerButtonsContainer>
           <Button
             full
+            rounded
             style={styles.answerButton}
             primary={this.props.answerButtonPrimary[0]}
             danger={this.props.answerButtonDanger[0]}
@@ -30,6 +32,7 @@ class GameQuestionScreen extends React.Component {
           </Button>
           <Button
             full
+            rounded
             style={styles.answerButton}
             primary={this.props.answerButtonPrimary[1]}
             danger={this.props.answerButtonDanger[1]}
@@ -40,6 +43,7 @@ class GameQuestionScreen extends React.Component {
           </Button>
           <Button
             full
+            rounded
             style={styles.answerButton}
             primary={this.props.answerButtonPrimary[2]}
             danger={this.props.answerButtonDanger[2]}
@@ -50,6 +54,7 @@ class GameQuestionScreen extends React.Component {
           </Button>
           <Button
             full
+            rounded
             style={styles.answerButton}
             primary={this.props.answerButtonPrimary[3]}
             danger={this.props.answerButtonDanger[3]}
@@ -60,6 +65,7 @@ class GameQuestionScreen extends React.Component {
           </Button>
           <Button
             full
+            rounded
             style={styles.answerButton}
             primary={this.props.answerButtonPrimary[4]}
             danger={this.props.answerButtonDanger[4]}
@@ -70,6 +76,7 @@ class GameQuestionScreen extends React.Component {
           </Button>
           <Button
             full
+            rounded
             style={styles.answerButton}
             primary={this.props.answerButtonPrimary[5]}
             danger={this.props.answerButtonDanger[5]}
@@ -78,21 +85,20 @@ class GameQuestionScreen extends React.Component {
               {this.props.answerButtonLabels[5]}
             </Text>
           </Button>
-        </View>
-        <View style={styles.submitButtonContainer}>
+        </AnswerButtonsContainer>
+        <SubmitButtonContainer>
           <Button
             block
+            rounded
             success
+            large
             onPress={
               () => {
-                // Make sure they selected an answer.
                 if (store.getState().question.selectedAnswer === -1) {
-                  // noinspection JSCheckFunctionSignatures
-                  Alert.alert("D'oh!", "Please select an answer",
+                  Alert.alert("Oh C'mon!", "Please select an answer",
                     [ { text : "OK" } ], { cancelable : false }
                   );
                 } else {
-                  // They did, so alert the server.
                   CoreCode.io.emit("submitAnswer", {
                     playerID : store.getState().playerInfo.id,
                     answer : store.getState().question.answerButtonLabels[
@@ -105,8 +111,8 @@ class GameQuestionScreen extends React.Component {
           >
             <Text style={styles.buttonText}>Submit Answer</Text>
           </Button>
-        </View>
-      </View>
+        </SubmitButtonContainer>
+      </OuterContainer>
     );
 
   } 
@@ -127,63 +133,44 @@ exports.GameQuestionScreen = connect(mapStateToProps)(GameQuestionScreen);
 
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#1F2026'
-  },
-  text: {
-    color: '#ffffff',
-    fontSize: 25, 
-    fontWeight: 'bold'
-  },
-
-  outerContainer : {
-    flex : 1,
-    alignItems : "stretch",
-    justifyContent : "center",
-    marginTop : 50,
-    marginLeft : 20,
-    marginRight : 20
-  },
-
-
-  questionContainer : {
-    flex : .2,
-    justifyContent : "center",
-    alignSelf : "center"
-  },
-
-
-  answerButtonsContainer : {
-    flex : .8,
-    alignItems : "center",
-    justifyContent : "center"
-  },
-
-
-  submitButtonContainer : {
-    justifyContent : "center",
-    height : 140
-  },
-
-
   question : {
     fontWeight : "bold",
     fontSize : 26,
-    color : "red",
+    color : "#F1380F",
     textAlign : "center"
   },
-
 
   answerButton : {
     marginTop : 20
   },
-
 
   buttonText : {
     fontWeight : "bold",
     color : "white"
   }
 });
+
+export const OuterContainer = styled.SafeAreaView`
+  flex: 1;
+  background-color: #1F2026;
+  align-items: stretch;
+  justify-content: center;
+`;
+
+export const QuestionContainer = styled.View`
+  flex: .2;
+  align-self: center;
+  justify-content: center;
+`;
+
+export const AnswerButtonsContainer = styled.View`
+  flex: .8;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const SubmitButtonContainer = styled.View`
+  height: 140px;
+  justify-content: center;
+`;
+

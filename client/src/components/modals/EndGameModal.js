@@ -5,7 +5,7 @@ import { Button } from "native-base";
 import { connect } from "react-redux";
 
 
-export const OuterContainer = styled.View`
+export const OuterContainer = styled.SafeAreaView`
     flex: 1;
     align-items: center;
     justify-content: center;
