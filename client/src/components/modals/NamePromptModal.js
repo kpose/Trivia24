@@ -8,7 +8,7 @@ import { setPlayerName, setIsAdmin } from "../../state/actions";
 import store from "../../state/store";
 
 
-export const OutsideContainer = styled.View`
+export const OutsideContainer = styled.SafeAreaView`
   flex: 1;
   align-items: center;
   margin: 20px;
