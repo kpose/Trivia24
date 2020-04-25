@@ -1,9 +1,9 @@
 {
-  "expoServerNgrokUrl": "https://ky-e3n.kpose.client.exp.direct",
-  "packagerNgrokUrl": "https://packager.ky-e3n.kpose.client.exp.direct",
-  "ngrokPid": 18760,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 19444
+  "packagerPid": 8636
 }

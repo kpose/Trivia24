@@ -23,7 +23,7 @@ exports.modalsReducer = function(inState={}, inAction) {
             // Set current status.
             modalsNode.currentStatus = inAction.payload.currentStatus;
             return{
-                ...state,
+                ...inState,
                 ...modalsNode
             };
         }
