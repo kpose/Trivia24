@@ -1,37 +1,15 @@
 import React from "react";
-import { FlatList, WebView, StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 import { connect } from "react-redux";
 import store from "../state/store";
+import styled from 'styled-components/native';
+import { WebView } from 'react-native-webview';
 
 const styles = StyleSheet.create({
-
-  outerContainer : {
-    flex : 1,
-    alignItems : "stretch",
-    justifyContent : "center",
-    marginTop : 50
-  },
-
-  headingContainer : {
-    height : 150,
-    justifyContent : "center",
-    alignSelf : "center"
-  },
-
   headingText : {
     fontSize : 34,
-    fontWeight : "bold"
-  },
-
-
-  listContainer : {
-    flex : .6,
-    marginLeft : 20,
-    marginRight : 20,
-    marginBottom : 40,
-    borderColor : "silver",
-    borderWidth : 2,
-    padding : 10
+    fontWeight : "bold",
+    color: "#eb8c34"
   },
 
   awaitingQuestionContainer : {
@@ -41,20 +19,41 @@ const styles = StyleSheet.create({
   awaitingQuestionWebView : {
     backgroundColor : "transparent"
   }
-
 });
 
+export const OuterContainer = styled.SafeAreaView`
+  flex: 1;
+  background-color: #1F2026;
+  align-items: stretch;
+  justify-content: center;
+`;
+
+export const HeadingContainer = styled.View`
+  height: 150px;
+  justify-content: center;
+  align-self: center;
+`;
+
+export const ListContainer = styled.View`
+  flex: .6;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 40px;
+  border-color: #9acd32;
+  border-width: 2px;
+  padding: 10px;
+`;
 
 const awaitingQuestionSpinStyles = `
 .spinText {
   animation-name : spin, depth;
   animation-timing-function : linear;
   animation-iteration-count : infinite;
-  animation-duration : 3s;
+  animation-duration : 6s;
   text-align : center;
   font-weight : bold;
-  color : red;
-  font-size : 24pt;
+  color : #F1C40F;
+  font-size : 34pt;
   padding-top : 100px;
 }
 @keyframes spin {
@@ -84,11 +83,11 @@ class GameLeaderboardScreen extends React.Component {
   } 
   render() {
     return (
-      <View style={styles.outerContainer}>
-        <View style={styles.headingContainer}>
+      <OuterContainer>
+        <HeadingContainer>
           <Text style={styles.headingText}>Current Leaderboard</Text>
-        </View>
-        <View style={styles.listContainer}>
+        </HeadingContainer>
+        <ListContainer>
 
           <FlatList
             data={this.props.listData}
@@ -97,24 +96,26 @@ class GameLeaderboardScreen extends React.Component {
               return (
                 <View style={{ flex : 1, flexDirection : "row" }}>
                   <View style={{ flex : .6 }}>
-                    <Text style={{ fontSize : 20 }}>{item.playerName}
+                    <Text style={{ fontSize : 20, color: "#ffffff" }}>{item.playerName}
                     {store.getState().playerInfo.id === item.playerID ? " (YOU)" : ""}</Text>
                   </View>
                   <View style={{ flex : .4 }}>
-                    <Text style={{ fontSize : 20 }}>{item.points} points</Text>
+                    <Text style={{ fontSize : 20, color: "#f00e25" }}>{item.points} points</Text>
                   </View>
                 </View>
               );
             } }
           />
-        </View>
+        </ListContainer>
+
         <View style={styles.awaitingQuestionContainer}>
           <WebView
+            originWhitelist={['*']}
             style={styles.awaitingQuestionWebView}
             source={{ html : awaitingQuestionHTML }}
           />
         </View>
-      </View>
+      </OuterContainer>
     );
 
   } 
