@@ -1,9 +1,9 @@
 {
   "expoServerNgrokUrl": "https://z5-p6m.kpose.client.exp.direct",
   "packagerNgrokUrl": "https://packager.z5-p6m.kpose.client.exp.direct",
-  "ngrokPid": 9828,
+  "ngrokPid": 2728,
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 8052
+  "packagerPid": 11884
 }
