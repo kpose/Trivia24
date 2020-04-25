@@ -11,7 +11,7 @@ function GameScreen() {
       <Stack.Navigator 
             initialRouteName='GameHomeScreen'
             screenOptions={{
-                gestureEnabled: true,
+                gestureEnabled: false,
                 headerShown: false
           }}>
         <Stack.Screen 

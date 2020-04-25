@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Card, CardItem, Body } from "native-base";
+import styled from 'styled-components/native';
 import { connect } from "react-redux";
 
 
@@ -8,27 +9,25 @@ class InfoScreen extends React.Component {
 
   constructor(inProps) {
     super(inProps);
-
   }  
   render() {
 
     return (
-      <View style={styles.outerContainer}>
-
+      <OuterContainer>
         <View style={styles.identificationCardContainer}>
           <Card transparent>
-            <CardItem header>
+            <CardItem header style={{ backgroundColor:'#DB9A8B'}}>
               <Text style={styles.headerText}>Identification</Text>
             </CardItem>
-            <CardItem>
+            <CardItem  style={{ backgroundColor:'#63CC6A'}}>
               <Body>
-                <View style={styles.fieldContainer}>
-                  <Text style={styles.fieldLabel}>Player Name</Text>
-                  <Text>{this.props.playerName}</Text>
+                <View style={[ styles.fieldContainer, styles.fieldSpacing ]}>
+                  <Text style={styles.fieldLabel}>Player Name:</Text>
+                  <Text style={styles.fieldValue}>{this.props.playerName}</Text>
                 </View>
-                <View style={styles.fieldContainer}>
-                  <Text style={styles.fieldLabel}>Player ID</Text>
-                  <Text>{this.props.playerID}</Text>
+                <View style={[ styles.fieldContainer, styles.fieldSpacing ]}>
+                  <Text style={styles.fieldLabel}>Player ID:</Text>
+                  <Text style={styles.fieldValue}>{this.props.playerID}</Text>
                 </View>
               </Body>
             </CardItem>
@@ -36,80 +35,71 @@ class InfoScreen extends React.Component {
         </View>
 
         <View style={styles.currentGameCardContainer}>
-          <Card>
-            <CardItem header>
+          <Card transparent>
+            <CardItem header  style={{ backgroundColor:'#DB9A8B'}}>
               <Text style={styles.headerText}>Current Game</Text>
             </CardItem>
-            <CardItem>
+            <CardItem  style={{ backgroundColor:'#63CC6A'}}>
               <Body>
                 <View style={[ styles.fieldContainer, styles.fieldSpacing ]}>
-                  <Text style={styles.fieldLabel}>Asked</Text>
-                  <Text>{this.props.asked}</Text>
+                  <Text style={styles.fieldLabel}>Asked:</Text>
+                  <Text style={styles.fieldValue}>{this.props.asked}</Text>
                 </View>
                 <View style={[ styles.fieldContainer, styles.fieldSpacing ]}>
-                  <Text style={styles.fieldLabel}>Answered</Text>
-                  <Text>{this.props.answered}</Text>
+                  <Text style={styles.fieldLabel}>Answered:</Text>
+                  <Text style={styles.fieldValue}>{this.props.answered}</Text>
                 </View>
                 <View style={[ styles.fieldContainer, styles.fieldSpacing ]}>
-                  <Text style={styles.fieldLabel}>Points</Text>
-                  <Text>{this.props.points}</Text>
+                  <Text style={styles.fieldLabel}>Points:</Text>
+                  <Text style={styles.fieldValue}>{this.props.points}</Text>
                 </View>
                 <View style={[ styles.fieldContainer, styles.fieldSpacing ]}>
-                  <Text style={styles.fieldLabel}>Right</Text>
-                  <Text>{this.props.right}</Text>
+                  <Text style={styles.fieldLabel}>Right:</Text>
+                  <Text style={styles.fieldValue}>{this.props.right}</Text>
                 </View>
                 <View style={[ styles.fieldContainer, styles.fieldSpacing ]}>
-                  <Text style={styles.fieldLabel}>Wrong</Text>
-                  <Text>{this.props.wrong}</Text>
+                  <Text style={styles.fieldLabel}>Wrong:</Text>
+                  <Text style={styles.fieldValue}>{this.props.wrong}</Text>
                 </View>
                 <View style={[ styles.fieldContainer, styles.fieldSpacing ]}>
-                  <Text style={styles.fieldLabel}>Total Time</Text>
-                  <Text>{this.props.totalTime}</Text>
+                  <Text style={styles.fieldLabel}>Total Time:</Text>
+                  <Text style={styles.fieldValue}>{this.props.totalTime}</Text>
                 </View>
                 <View style={[ styles.fieldContainer, styles.fieldSpacing ]}>
-                  <Text style={styles.fieldLabel}>Slowest</Text>
-                  <Text>{this.props.slowest}</Text>
+                  <Text style={styles.fieldLabel}>Slowest:</Text>
+                  <Text style={styles.fieldValue}>{this.props.slowest}</Text>
                 </View>
                 <View style={[ styles.fieldContainer, styles.fieldSpacing ]}>
-                  <Text style={styles.fieldLabel}>Fastest</Text>
-                  <Text>{this.props.fastest}</Text>
+                  <Text style={styles.fieldLabel}>Fastest:</Text>
+                  <Text style={styles.fieldValue}>{this.props.fastest}</Text>
                 </View>
                 <View style={ styles.fieldContainer }>
-                  <Text style={styles.fieldLabel}>Average</Text>
-                  <Text>{this.props.average}</Text>
+                  <Text style={styles.fieldLabel}>Average:</Text>
+                  <Text style={styles.fieldValue}>{this.props.average}</Text>
                 </View>
               </Body>
             </CardItem>
           </Card>
         </View>
 
-      </View>
+      </OuterContainer>
     );
-
   } 
-
-
 }
 
 const styles = StyleSheet.create({
-
-  outerContainer : {
-    justifyContent : "center",
-    marginTop : 50,
-    marginLeft : 20,
-    marginRight : 20
-  },
-
-
   identificationCardContainer : {
     height : 150,
-    marginBottom : 20
+    marginBottom : 20,
+    marginLeft : 15,
+    marginRight : 15
   },
 
   currentGameCardContainer : {
-    height : 360
+    height : 360,
+    marginLeft : 15,
+    marginRight : 15
   },
-
 
   headerText : {
     fontWeight : "bold",
@@ -117,17 +107,19 @@ const styles = StyleSheet.create({
     color : "red"
   },
 
-
   fieldContainer : {
     flexDirection : "row"
   },
 
-
   fieldLabel : {
     width : 100,
-    fontWeight : "bold"
+    fontWeight : "bold",
+    color : "#ffffff"
   },
 
+  fieldValue : {
+    fontWeight : "bold"
+  },
 
   fieldSpacing : {
     marginBottom : 12
@@ -148,9 +140,15 @@ const mapStateToProps = (inState) => {
     slowest : inState.gameData.slowest,
     fastest : inState.gameData.fastest,
     average : inState.gameData.average
-
   };
 };
+
+
+export const OuterContainer = styled.View`
+  flex: 1;
+  background-color: #1F2026;
+  justify-content: center;
+`;
 
 
 export default connect(mapStateToProps)(InfoScreen);

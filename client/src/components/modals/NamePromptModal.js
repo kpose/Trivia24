@@ -13,7 +13,6 @@ export const OutsideContainer = styled.View`
   align-items: center;
   margin: 20px;
   justify-content: center;
-  
 `;
 
 export const HeadingContainer = styled.View`
@@ -61,7 +60,7 @@ class NamePromptModal extends React.Component {
         <OutsideContainer>
           <HeadingContainer>
             <HeadingText>
-              <Text>Hello, Champion!</Text>
+              <Text style={{ fontSize: 40, color: "#F1380F", fontWeight: "bold" }}>Hello, Champion!</Text>
             </HeadingText>
           </HeadingContainer>
           <InputFieldContainer>
@@ -83,7 +82,7 @@ class NamePromptModal extends React.Component {
                 />
               </View>
               <View style={{ paddingLeft : 10 }}>
-                <Text>I am the admin</Text>
+                <Text style={{ fontSize: 20, color: "#356112", fontWeight: "bold"}}>I am the admin</Text>
               </View>
             </SwitchContainer>
           </InputFieldContainer>

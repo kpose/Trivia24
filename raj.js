@@ -1,179 +1,107 @@
 import React from "react";
-import {View, Text, StyleSheet, ImageBackground, Image,Dimensions} from 'react-native';
-import { Card, CardItem, Body } from "native-base";
-import { connect } from "react-redux";
-import LottieView from 'lottie-react-native';
+import { Modal, View, TextInput } from "react-native";
 import styled from 'styled-components/native';
+import { Button, Item, Label, Switch, Text } from "native-base";
+import { connect } from "react-redux";
+import CoreCode from "../../../src/CoreCode";
+import { setPlayerName, setIsAdmin } from "../../state/actions";
+import store from "../../state/store";
 
-const winner = require('../animations/winner.json');
 
-class InfoScreen extends React.Component {
+export const OutsideContainer = styled.SafeAreaView`
+  flex: 1;
+  align-items: center;
+  margin: 20px;
+  justify-content: center;
+`;
 
+export const HeadingContainer = styled.View`
+    margin-top: 40px;
+    height : 100px;
+    justify-content : center;
+`;
+
+export const HeadingText = styled.Text`
+    font-size : 40px;
+    font-weight : bold;
+`;
+
+export const InputFieldContainer = styled.View`
+    flex : 1;
+    justify-content : center;
+    align-self : stretch;
+`;
+
+export const SwitchContainer = styled.View`
+    margin-top : 40px;
+    justify-content : center;
+    flex-direction : row;
+`;
+
+export const ButtonContainer = styled.View`
+    height : 80px;
+    justify-content : center;
+    align-self : stretch;
+`;
+
+
+class NamePromptModal extends React.Component {
   constructor(inProps) {
     super(inProps);
-
   } 
+
   render() {
-
     return (
-
-       <LottieView
-          source={winner}
-          autoPlay
-          style={{ width: 400, height: 300 }}
-          resizeMode="cover"
-        />
-
-      <View style = {styles.overlay}>
-      <View style={styles.outerContainer}>
-
-<View style={styles.identificationCardContainer}>
-  <Card transparent>
-    <CardItem header>
-      <Text style={styles.headerText}>Identification</Text>
-    </CardItem>
-    <CardItem>
-      <Body>
-        <View style={styles.fieldContainer}>
-          <Text style={styles.fieldLabel}>Player Name</Text>
-          <Text>{this.props.playerName}</Text>
-        </View>
-        <View style={styles.fieldContainer}>
-          <Text style={styles.fieldLabel}>Player ID</Text>
-          <Text>{this.props.playerID}</Text>
-        </View>
-      </Body>
-    </CardItem>
-  </Card>
-</View>
-
-<View style={styles.currentGameCardContainer}>
-  <Card>
-    <CardItem header>
-      <Text style={styles.headerText}>Current Game</Text>
-    </CardItem>
-    <CardItem>
-      <Body>
-        <View style={[ styles.fieldContainer, styles.fieldSpacing ]}>
-          <Text style={styles.fieldLabel}>Asked</Text>
-          <Text>{this.props.asked}</Text>
-        </View>
-        <View style={[ styles.fieldContainer, styles.fieldSpacing ]}>
-          <Text style={styles.fieldLabel}>Answered</Text>
-          <Text>{this.props.answered}</Text>
-        </View>
-        <View style={[ styles.fieldContainer, styles.fieldSpacing ]}>
-          <Text style={styles.fieldLabel}>Points</Text>
-          <Text>{this.props.points}</Text>
-        </View>
-        <View style={[ styles.fieldContainer, styles.fieldSpacing ]}>
-          <Text style={styles.fieldLabel}>Right</Text>
-          <Text>{this.props.right}</Text>
-        </View>
-        <View style={[ styles.fieldContainer, styles.fieldSpacing ]}>
-          <Text style={styles.fieldLabel}>Wrong</Text>
-          <Text>{this.props.wrong}</Text>
-        </View>
-        <View style={[ styles.fieldContainer, styles.fieldSpacing ]}>
-          <Text style={styles.fieldLabel}>Total Time</Text>
-          <Text>{this.props.totalTime}</Text>
-        </View>
-        <View style={[ styles.fieldContainer, styles.fieldSpacing ]}>
-          <Text style={styles.fieldLabel}>Slowest</Text>
-          <Text>{this.props.slowest}</Text>
-        </View>
-        <View style={[ styles.fieldContainer, styles.fieldSpacing ]}>
-          <Text style={styles.fieldLabel}>Fastest</Text>
-          <Text>{this.props.fastest}</Text>
-        </View>
-        <View style={ styles.fieldContainer }>
-          <Text style={styles.fieldLabel}>Average</Text>
-          <Text>{this.props.average}</Text>
-        </View>
-      </Body>
-    </CardItem>
-  </Card>
-</View>
-
-</View>
-      </View>            
-          </ImageBackground>
-      
+      <Modal
+        presentationStyle={"overFullScreen"}
+        visible={this.props.isVisible}
+        animationType={"slide"}
+        onRequestClose={ () => { } }>
+        <OutsideContainer>
+          <HeadingContainer>
+            <HeadingText>
+              <Text style={{ fontSize: 40, color: "#F1380F", fontWeight: "bold" }}>Hello, Champion!</Text>
+            </HeadingText>
+          </HeadingContainer>
+          <InputFieldContainer>
+            <Item floatingLabel>
+              <Label>Please enter your name</Label>
+              <TextInput
+                autoCorrect = {false}
+                autoCapitalize="none"
+                onChangeText={
+                  (inText) => store.dispatch(setPlayerName(inText))
+                }
+              />
+            </Item>
+            <SwitchContainer>
+              <View>
+                <Switch
+                  value={this.props.isAdmin}
+                  onValueChange={
+                    (inValue) => store.dispatch(setIsAdmin(inValue))
+                  }
+                />
+              </View>
+              <View style={{ paddingLeft : 10 }}>
+                <Text style={{ fontSize: 20, color: "#356112", fontWeight: "bold"}}>I am the admin</Text>
+              </View>
+            </SwitchContainer>
+          </InputFieldContainer>
+          <ButtonContainer>
+            <Button block onPress={CoreCode.startup}><Text>Ok</Text></Button>
+          </ButtonContainer>
+        </OutsideContainer>
+      </Modal>
     );
-
   } 
-
-
-}
-
-const styles = StyleSheet.create({
-
-  outerContainer : {
-    justifyContent : "center",
-    marginTop : 50,
-    marginLeft : 20,
-    marginRight : 20
-  },
-
-  container: {
-
-  }, 
-
-  overlay: {
-    backgroundColor:'rgba(255,0,0,0.5)',
-},
-
-
-  identificationCardContainer : {
-    height : 150,
-    marginBottom : 20
-  },
-
-  currentGameCardContainer : {
-    height : 360
-  },
-
-
-  headerText : {
-    fontWeight : "bold",
-    fontSize : 20,
-    color : "red"
-  },
-
-
-  fieldContainer : {
-    flexDirection : "row"
-  },
-
-
-  fieldLabel : {
-    width : 100,
-    fontWeight : "bold"
-  },
-
-
-  fieldSpacing : {
-    marginBottom : 12
-  }
-
-});
+} 
 
 const mapStateToProps = (inState) => {
   return {
-    playerName : inState.playerInfo.name,
-    playerID : inState.playerInfo.id,
-    asked : inState.gameData.asked,
-    answered : inState.gameData.answered,
-    points : inState.gameData.points,
-    right : inState.gameData.right,
-    wrong : inState.gameData.wrong,
-    totalTime : inState.gameData.totalTime,
-    slowest : inState.gameData.slowest,
-    fastest : inState.gameData.fastest,
-    average : inState.gameData.average
-
+    isVisible : inState.modals.namePromptVisible,
+    isAdmin : inState.modals.isAdmin
   };
 };
 
-
-export default connect(mapStateToProps)(InfoScreen);
+export default connect(mapStateToProps)(NamePromptModal);
