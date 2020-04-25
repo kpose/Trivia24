@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 
 });
 
-
+ 
 export default class MainLayout extends React.Component {
 
   constructor(inProps) {
