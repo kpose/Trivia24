@@ -89,12 +89,13 @@ class GameQuestionScreen extends React.Component {
         <SubmitButtonContainer>
           <Button
             block
+            rounded
             success
             large
             onPress={
               () => {
                 if (store.getState().question.selectedAnswer === -1) {
-                  Alert.alert("D'oh!", "Please select an answer",
+                  Alert.alert("Oh C'mon!", "Please select an answer",
                     [ { text : "OK" } ], { cancelable : false }
                   );
                 } else {

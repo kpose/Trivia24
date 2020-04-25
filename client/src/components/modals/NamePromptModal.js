@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, View } from "react-native";
+import { Modal, View, TextInput } from "react-native";
 import styled from 'styled-components/native';
 import { Button, Item, Input, Label, Switch, Text } from "native-base";
 import { connect } from "react-redux";
@@ -67,7 +67,9 @@ class NamePromptModal extends React.Component {
           <InputFieldContainer>
             <Item floatingLabel>
               <Label>Please enter your name</Label>
-              <Input
+              <TextInput
+                autoCorrect = {false}
+                autoCapitalize="none"
                 onChangeText={
                   (inText) => store.dispatch(setPlayerName(inText))
                 }
