@@ -88,13 +88,6 @@ class InfoScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  outerContainer : {
-    justifyContent : "center",
-    marginTop : 50,
-    marginLeft : 20,
-    marginRight : 20
-  },
-
   identificationCardContainer : {
     height : 150,
     marginBottom : 20,
@@ -151,7 +144,7 @@ const mapStateToProps = (inState) => {
 };
 
 
-export const OuterContainer = styled.SafeAreaView`
+export const OuterContainer = styled.View`
   flex: 1;
   background-color: #1F2026;
   justify-content: center;

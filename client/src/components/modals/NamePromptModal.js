@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, View, TextInput } from "react-native";
+import { Modal, View } from "react-native";
 import styled from 'styled-components/native';
 import { Button, Item, Input, Label, Switch, Text } from "native-base";
 import { connect } from "react-redux";
@@ -8,12 +8,11 @@ import { setPlayerName, setIsAdmin } from "../../state/actions";
 import store from "../../state/store";
 
 
-export const OutsideContainer = styled.SafeAreaView`
+export const OutsideContainer = styled.View`
   flex: 1;
   align-items: center;
   margin: 20px;
   justify-content: center;
-  
 `;
 
 export const HeadingContainer = styled.View`
@@ -61,15 +60,13 @@ class NamePromptModal extends React.Component {
         <OutsideContainer>
           <HeadingContainer>
             <HeadingText>
-              <Text>Hello, Champion!</Text>
+              <Text style={{ fontSize: 40, color: "#F1380F", fontWeight: "bold" }}>Hello, Champion!</Text>
             </HeadingText>
           </HeadingContainer>
           <InputFieldContainer>
             <Item floatingLabel>
               <Label>Please enter your name</Label>
-              <TextInput
-                autoCorrect = {false}
-                autoCapitalize="none"
+              <Input
                 onChangeText={
                   (inText) => store.dispatch(setPlayerName(inText))
                 }
@@ -85,7 +82,7 @@ class NamePromptModal extends React.Component {
                 />
               </View>
               <View style={{ paddingLeft : 10 }}>
-                <Text>I am the admin</Text>
+                <Text style={{ fontSize: 20, color: "#356112", fontWeight: "bold"}}>I am the admin</Text>
               </View>
             </SwitchContainer>
           </InputFieldContainer>
