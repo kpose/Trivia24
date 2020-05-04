@@ -136,7 +136,15 @@ const CoreCode = {
     // Show the leaderboard and a toast message telling the player the result.
     store.dispatch(updateLeadboard(inData.leaderboard));
     CoreCode.mainNavigator.navigate("GameLeaderboardScreen");
-    Toast.show({ text: msg, buttonText : "Ok", type : type, duration : 3000 });
+    Toast.show({ 
+      text: msg, 
+      buttonText : "Okay", 
+      type : type, 
+      duration : 3000,
+      textStyle: { color: "yellow" },
+      buttonTextStyle: { color: "#008000" },
+      buttonStyle: { backgroundColor: "#5cb85c" } 
+    });
     Vibration.vibrate(1000);
 
   }, /* End answerOutcome(). */
