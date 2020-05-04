@@ -1,11 +1,8 @@
 export default initialState = {
-
-    //data that the leaderboard screen
     leaderboard : {
       listData : [ ]
     },
-  
-    //information about current game
+
     gameData : {
       asked : "?????",
       answered : "?????",
@@ -42,5 +39,4 @@ export default initialState = {
       id : null,
       name : null
     }
-  
   };

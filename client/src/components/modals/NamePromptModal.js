@@ -8,11 +8,13 @@ import { setPlayerName, setIsAdmin } from "../../state/actions";
 import store from "../../state/store";
 
 
-export const OutsideContainer = styled.View`
+export const OutsideContainer = styled.SafeAreaView`
   flex: 1;
   align-items: center;
-  margin: 20px;
+  
+  background-color: #1F2026;
   justify-content: center;
+  
 `;
 
 export const HeadingContainer = styled.View`
@@ -53,7 +55,7 @@ class NamePromptModal extends React.Component {
   render() {
     return (
       <Modal
-        presentationStyle={"formSheet"}
+        presentationStyle={"overFullScreen"}
         visible={this.props.isVisible}
         animationType={"slide"}
         onRequestClose={ () => { } }>

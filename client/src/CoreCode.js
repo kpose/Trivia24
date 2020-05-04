@@ -9,16 +9,11 @@ import {
 import store from "../src/state/store";
 
 
-/**
- * #############################################################################
- * Core code of the app lives in this singleton.
- * #############################################################################
- */
 const CoreCode = {
 
 
   // The IP address of the server.
-  serverIP : "192.168.0.101",
+  //serverIP : "192.168.0.102",
 
   // Our Socket.io connection to the server.
   io : null,
@@ -27,12 +22,7 @@ const CoreCode = {
   mainNavigator : null,
 
 
-  /**
-   * Starts up the app after getting the user's name.
-   */
   startup : () => {
-
-    // Gotta enter a name of at least two characters if not the admin.
     if (!store.getState().modals.isAdmin &&
       (store.getState().playerInfo.name == null ||
       store.getState().playerInfo.name.trim() === "" ||
@@ -45,10 +35,7 @@ const CoreCode = {
     store.dispatch(showHideModal("namePrompt", false));
 
     // Open a socket.io-based connection to the server.
-    CoreCode.io = io(`http://${CoreCode.serverIP}`);
-
-    // Hook socket handler events (which depends on whether user is admin
-    // or not).
+    CoreCode.io = io("https://trivia24server.herokuapp.com");
     if (store.getState().modals.isAdmin) {
       CoreCode.io.on("connected", function() { console.log("ADMIN CONNECTED"); });
       CoreCode.io.on("adminMessage", CoreCode.adminMessage);
@@ -62,38 +49,23 @@ const CoreCode = {
       CoreCode.io.on("answerOutcome", CoreCode.answerOutcome);
       CoreCode.io.on("endGame", CoreCode.endGame);
     }
+  },
+  
 
-  }, /* End startup(). * /
-  /**
-   * Handles connected messages from the server.
-   */
   connected : function(inData) {
 
     console.log("connected()", inData);
-
-    // Ask the server to validate the playerID.
     CoreCode.io.emit("validatePlayer", {
       playerName : store.getState().playerInfo.name
     });
 
-  }, /* End connected(). */
+  },
 
 
-  /**
-   * Handles validatePlayer messages from the server.
-   *
-   * @param inData The data object from the server.
-   */
   validatePlayer : function(inData) {
 
     console.log("validatePlayer()", inData);
-
-    // Record the playerID.
     store.dispatch(setPlayerID(inData.playerID));
-
-    // Update and show the leaderboard.  This player will wait for the
-    // next question.
-    // noinspection JSUnresolvedVariable
     if (inData.inProgress) {
       inData.gameData.asked = inData.asked;
       store.dispatch(setGameData(inData.gameData));
@@ -101,22 +73,13 @@ const CoreCode = {
       CoreCode.mainNavigator.navigate("GameLeaderboardScreen");
     }
 
-  }, /* End validatePlayer(). */
+  },
 
 
-  /**
-   * Handles newGame messages from the server.
-   *
-   * @param inData The data object from the server.
-   */
   newGame : function(inData) {
 
     console.log("newGame()", inData);
-
-    // Hide End Game Modal.
     store.dispatch(showHideModal("endGame", false));
-
-    // Update the game info and leaderboard.
     inData.gameData.asked = inData.asked;
     store.dispatch(setGameData(inData.gameData));
     store.dispatch(updateLeadboard(inData.leaderboard));
@@ -124,14 +87,9 @@ const CoreCode = {
     // Show the leaderboard screen.
     CoreCode.mainNavigator.navigate("GameLeaderboardScreen");
 
-  }, /* End newGame(). */
+  },
 
-
-  /**
-   * Handles nextQuestion messages from the server.
-   *
-   * @param inData The data object from the server.
-   */
+ 
   nextQuestion : function(inData) {
 
     console.log("nextQuestion()", inData);
@@ -159,11 +117,6 @@ const CoreCode = {
   }, /* End nextQuestion(). */
 
 
-  /**
-   * Handles answerOutcome messages from the server.
-   *
-   * @param inData The data object from the server.
-   */
   answerOutcome : function(inData) {
 
     console.log("answerOutcome()", inData);
@@ -189,22 +142,19 @@ const CoreCode = {
   }, /* End answerOutcome(). */
 
 
-  /**
-   * Handles endGame messages from the server.
-   *
-   * @param inData The data object from the server.
-   */
+  
   endGame : function(inData) {
 
     console.log("endGame()", inData);
 
-    // Show the final game info.
-    inData.gameData.asked = inData.asked;
     store.dispatch(setGameData(inData.gameData));
-
-    // Show the final leaderboard.
     store.dispatch(updateLeadboard(inData.leaderboard));
+
+    // Show the leaderboard screen.
     CoreCode.mainNavigator.navigate("GameLeaderboardScreen");
+
+
+
 
     if (inData.leaderboard[0].playerID === store.getState().playerInfo.id) {
 
@@ -213,8 +163,6 @@ const CoreCode = {
 
     } else {
 
-      // Nope, didn't quite pull off the wun, so figure out what place they finished in and the appropriate text to
-      // show.  We have to find their index in the array, and then attach an appropriate ordinal suffix to it.
       let place = "";
       let index = inData.leaderboard.findIndex((inPlayer) => inPlayer.playerID === CoreCode.playerID);
       index++;
@@ -237,24 +185,15 @@ const CoreCode = {
 
     }
 
-  }, /* End endGame(). */
-
-
-  /**
-   * Handles showing messages for the admin sent from the server.
-   *
-   * @param inData The data object from the server.
-   */
+  },
   adminMessage : function(inData) {
 
     console.log("adminMessage()", inData);
 
     store.dispatch(setCurrentStatus(inData.msg));
 
-  } /* End adminMessage(). */
-
-
-}; /* CoreCode. */
+  }
+};
 
 
 export default CoreCode;

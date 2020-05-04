@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Modal, Text, StyleSheet, View, TouchableOpacity } from "react-native";
+import { Modal, Text, StyleSheet } from "react-native";
 import styled from 'styled-components/native';
 import { connect } from "react-redux";
 import CoreCode from "../../../src/CoreCode";
@@ -86,8 +86,6 @@ class AdminModal extends React.Component {
   constructor(inProps) {
     super(inProps);
   }
-
-
   render() {
     return (
       <Modal
@@ -124,7 +122,7 @@ class AdminModal extends React.Component {
             </Text>
           </CurrentStatusContainer>
         </OuterContainer>
-      </Modal>
+      </Modal> 
     );
 
   } 

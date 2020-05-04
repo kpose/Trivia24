@@ -1,16 +1,20 @@
 import React from "react";
-import { Modal, Text, View } from "react-native";
+import { Modal, Text } from "react-native";
 import styled from 'styled-components/native';
 import { Button } from "native-base";
 import { connect } from "react-redux";
+import LottieView from 'lottie-react-native';
+import CoreCode from "../../../src/CoreCode";
+
+const firework = require('../../animations/firework.json');
 
 
 export const OuterContainer = styled.SafeAreaView`
     flex: 1;
     align-items: center;
     justify-content: center;
-    margin: 20px;
-`;
+    background-color: #1F2026;
+`; 
 
 export const HeadingContainer = styled.View`
     height: 100px;
@@ -18,7 +22,7 @@ export const HeadingContainer = styled.View`
 `;
 
 export const HeadingText = styled.Text`
-  font-size: 20px;
+  font-size: 50px;
   font-weight: bold;
 `;
 
@@ -41,17 +45,15 @@ export const ButtonText = styled.Text`
 
 
 
-
 class EndGameModal extends React.Component {
   constructor(inProps) {
     super(inProps);
   }
 
   render() {
-
     return (
       <Modal
-        presentationStyle={"formSheet"}
+        presentationStyle={"overFullScreen"}
         visible={this.props.isVisible}
         animationType={"slide"}
         onRequestClose={ () => { } }
@@ -59,14 +61,23 @@ class EndGameModal extends React.Component {
         <OuterContainer>
           <HeadingContainer>
             <HeadingText>
-                <Text>Game over</Text>
+                <Text style={{ fontSize: 40, color: "#F1380F", fontWeight: "bold" }}> Game over!! </Text>
             </HeadingText>
           </HeadingContainer>
+
+          
           <MessageContainer>
-            <Text>{this.props.message}</Text>
+            <Text style={{ fontSize: 20, color: "#F1C40F", fontWeight: "bold" }}>{this.props.message}</Text>
           </MessageContainer>
+
+          <LottieView
+          source={firework}
+          autoPlay
+          style={{ width: 500, height: 400 }}
+          resizeMode="cover"
+        />
           <ButtonContainer>
-            <Button block onPress={ () => { } }>
+          <Button block onPress={ () => { } }>
               <ButtonText>
                 <Text>Ok</Text>
               </ButtonText>
@@ -77,8 +88,6 @@ class EndGameModal extends React.Component {
     );
 
   }
-
-
 } 
 
 const mapStateToProps = (inState) => {

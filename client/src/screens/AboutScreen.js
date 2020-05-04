@@ -83,9 +83,7 @@ export default class AboutScreen extends React.Component {
   }
 
   constructor(inProps) {
-
     super(inProps);
-
   } 
 
   render() {
@@ -114,9 +112,6 @@ export default class AboutScreen extends React.Component {
         
       </View>
     );
-
   } 
-
-
 }
 
