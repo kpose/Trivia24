@@ -1,18 +1,19 @@
 import React from "react";
-import { Modal, View } from "react-native";
+import { Modal, View, TextInput, StyleSheet } from "react-native";
 import styled from 'styled-components/native';
-import { Button, Item, Input, Label, Switch, Text } from "native-base";
+import { Button, Item, Input, Label, Switch, Text, Form } from "native-base";
 import { connect } from "react-redux";
 import CoreCode from "../../../src/CoreCode";
 import { setPlayerName, setIsAdmin } from "../../state/actions";
 import store from "../../state/store";
 
 
-export const OutsideContainer = styled.View`
+export const OutsideContainer = styled.SafeAreaView`
   flex: 1;
   align-items: center;
-  margin: 20px;
+  background-color: #EBEFE7;
   justify-content: center;
+  
 `;
 
 export const HeadingContainer = styled.View`
@@ -44,6 +45,11 @@ export const ButtonContainer = styled.View`
     align-self : stretch;
 `;
 
+const styles = StyleSheet.create({
+  textInputStyle: {
+  color: 'white',
+  }
+});
 
 class NamePromptModal extends React.Component {
   constructor(inProps) {
@@ -53,7 +59,7 @@ class NamePromptModal extends React.Component {
   render() {
     return (
       <Modal
-        presentationStyle={"formSheet"}
+        presentationStyle={"overFullScreen"}
         visible={this.props.isVisible}
         animationType={"slide"}
         onRequestClose={ () => { } }>
@@ -64,7 +70,8 @@ class NamePromptModal extends React.Component {
             </HeadingText>
           </HeadingContainer>
           <InputFieldContainer>
-            <Item floatingLabel>
+          <Form>
+            <Item floatingLabel >
               <Label>Please enter your name</Label>
               <Input
                 onChangeText={
@@ -72,6 +79,7 @@ class NamePromptModal extends React.Component {
                 }
               />
             </Item>
+            </Form>
             <SwitchContainer>
               <View>
                 <Switch
@@ -87,7 +95,7 @@ class NamePromptModal extends React.Component {
             </SwitchContainer>
           </InputFieldContainer>
           <ButtonContainer>
-            <Button block onPress={CoreCode.startup}><Text>Ok</Text></Button>
+            <Button block onPress={CoreCode.startup}><Text>Continue</Text></Button>
           </ButtonContainer>
         </OutsideContainer>
       </Modal>

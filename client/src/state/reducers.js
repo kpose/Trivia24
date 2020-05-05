@@ -1,6 +1,5 @@
-import {
-  ANSWER_BUTTON_HIGHLIGHT, RESET_ALL_BUTTONS, SET_CURRENT_STATUS,
-  SET_END_GAME_MESSAGE, SET_GAME_DATA, SET_IS_ADMIN, SET_PLAYER_ID,
+import { ANSWER_BUTTON_HIGHLIGHT, RESET_ALL_BUTTONS, SET_CURRENT_STATUS,
+SET_END_GAME_MESSAGE, SET_GAME_DATA, SET_IS_ADMIN, SET_PLAYER_ID,
   SET_PLAYER_NAME, SET_QUESTION, SHOW_HIDE_MODAL, UPDATE_ANSWER_BUTTON_LABEL,
   UPDATE_LEADERBOARD
 } from "./actions";
@@ -35,16 +34,14 @@ exports.modalsReducer = function(inState = {}, inAction) {
       return { ... inState, ...modalsNode };
     }
 
-    default : { return inState; }
-
+    default : { 
+      return inState; 
+    }
   } 
 
 };
 
 
-/**
- * Reducer for the playerInfo branch of data in state screen.
- */
 exports.playerInfoReducer = function(inState = {}, inAction) {
 
   switch (inAction.type) {
@@ -61,16 +58,14 @@ exports.playerInfoReducer = function(inState = {}, inAction) {
       return { ... inState, ...playerInfoNode };
     }
 
-    default : { return inState; }
-
+    default : { 
+      return inState; 
+    }
   }
-
 }; 
 
 
-/**
- * Reducer for the InfoScreen screen (game data).
- */
+
 exports.gameDataReducer = function(inState = {}, inAction) {
 
   switch (inAction.type) {
@@ -78,15 +73,13 @@ exports.gameDataReducer = function(inState = {}, inAction) {
     case SET_GAME_DATA : {
       return { ...inState, ...inAction.payload.gameData };
     }
-    default : { return inState; }
+    default : { 
+      return inState; 
+    }
   }
-
 };
 
 
-/**
- * Reducer for the GameScreen->Question screen.
- */
 exports.questionReducer = function(inState = {}, inAction) {
 
   switch (inAction.type) {
@@ -122,16 +115,16 @@ exports.questionReducer = function(inState = {}, inAction) {
       return { ...inState, ...questionNode };
     }
 
-    default : { return inState; }
+    default : { 
+      return inState; 
+    }
 
   }
 
 }; 
 
 
-/**
- * Reducer for the GameScreen->Leaderboard screen.
- */
+
 exports.leaderboardReducer = function(inState = {}, inAction) {
 
   switch (inAction.type) {
@@ -139,7 +132,8 @@ exports.leaderboardReducer = function(inState = {}, inAction) {
       return { ...inState, ...{ listData : inAction.payload.listData } };
     }
 
-    default : { return inState; }
-
+    default : { 
+      return inState; 
+    }
   }
 };
