@@ -1,4 +1,5 @@
 import React from 'react';
+import { Text, StyleSheet } from "react-native";
 import LottieView from 'lottie-react-native';
 import styled from 'styled-components/native'; 
 
@@ -23,8 +24,11 @@ function  Welcome(props) {
       <IntroText>
       Trivia24 will allow you run a trivia contest for a group of people. One person, the
       admin, will be in control of when a new question is sent to the players. The players will 
-      then answer, and a leaderboard will be updated. (Best enjoyed with three or more players)
+      then answer, and a leaderboard will be updated.
       </IntroText>
+      <Text style={styles.introText} >
+        (Best enjoyed with three or more players)
+      </Text>
     </DescriptionView>
     <ShadowBox onPress={() => navigation.navigate('Home')}>
         <H1>Enter Game</H1>
@@ -72,12 +76,13 @@ export const DescriptionView = styled.View`
 `;
 
 export const IntroText = styled.Text`
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 500;
   text-align: center;
   padding-top: 32px;
   line-height: 26px;
-  color: #EBD6EF;
+  color: #ffffff;
+  font-family: Cochin;
 `;
 
 export const H1 = styled.Text`
@@ -99,6 +104,17 @@ export const ShadowBox = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
 `;
+
+const styles = StyleSheet.create({
+  introText: {
+    fontFamily: "Cochin",
+    fontSize: 20,
+    fontWeight: "bold",
+    marginTop: 20,
+    color: "#b80f0f",
+    textAlign: 'center'    
+  },
+});
 
 
 

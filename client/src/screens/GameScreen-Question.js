@@ -49,7 +49,7 @@ export const SubmitButtonContainer = styled.View`
   height: 140px;
   justify-content: center;
 `;
-
+ 
 
 
 class GameQuestionScreen extends React.Component {

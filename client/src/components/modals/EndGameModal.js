@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 import { Button } from "native-base";
 import { connect } from "react-redux";
 import LottieView from 'lottie-react-native';
-import CoreCode from "../../../src/CoreCode";
+import { showHideModal } from "../../state/actions";
 
 const firework = require('../../animations/firework.json');
 
@@ -77,7 +77,7 @@ class EndGameModal extends React.Component {
           resizeMode="cover"
         />
           <ButtonContainer>
-          <Button block onPress={ () => { } }>
+          <Button block onPress={ () => { store.dispatch(showHideModal(false)) } }>
               <ButtonText>
                 <Text>Ok</Text>
               </ButtonText>

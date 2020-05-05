@@ -22,7 +22,7 @@ export default initialState = {
       answerButtonLabels : [ null, null, null, null, null, null ],
       currentQuestion : null,
       selectedAnswer : -1
-    },
+    }, 
   
     //flags to determine which modal is showing
     modals : {

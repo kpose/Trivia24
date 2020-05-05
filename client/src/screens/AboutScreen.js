@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Alert } from "react-native";
 import styled from 'styled-components/native';
 import * as MailComposer from 'expo-mail-composer';
 
@@ -75,11 +75,21 @@ export const H1 = styled.Text`
 
 export default class AboutScreen extends React.Component {
 
-  sendMail() {
-    MailComposer.composeAsync({
-      recipients: ['ganihujude@gmail.com'],
-      subject: 'Hello Jude',
-    });
+  sendMail = async () => {
+    try {
+      const { status } = await MailComposer.composeAsync({
+        subject: 'Hello Jude',
+        recipients: ['ganihujude@gmail.com'],
+        isHtml: true,
+      });
+      if (status === 'sent') {
+        Alert.alert('Mail Successfully Sent!');
+      } else {
+        throw new Error(`Status: ${status}`);
+      }
+    } catch (e) {
+      Alert.alert('Mail Not Sent: ', e.message);
+    }
   }
 
   constructor(inProps) {
@@ -99,7 +109,7 @@ export default class AboutScreen extends React.Component {
         </View>
         <View style={styles.textContainer}>
           <Text style={styles.textSource}>Published As A Stay Home Companion</Text>
-          <Text style={styles.textSource}>During The Corona Pandemic</Text>
+          <Text style={styles.textSource}>During The Corona Virus Pandemic</Text>
           <Text style={styles.textSource}>in 2020</Text>
         </View>
         <View style={styles.textContainer}>
