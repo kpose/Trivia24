@@ -17,7 +17,6 @@ export default class GameHomeScreen extends React.Component {
   render() {
     return(
       <Container>
-
         <LottieView
           source={challenge}
           autoPlay
@@ -34,7 +33,6 @@ export default class GameHomeScreen extends React.Component {
       </Container>
     )
   }
-
 } 
 
 export const Container = styled.SafeAreaView`

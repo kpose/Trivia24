@@ -5,46 +5,27 @@ const lodash = require("lodash");
 const io =
   require("socket.io")(require("http").createServer(function(){}).listen(80));
 
-
+ 
 const players = { };
-
-// Is a game currently in progress?.
 let inProgress = false;
-
-// The questions for the game.
 let questions = null;
-
-// The current question in play.
 let question = null;
-
-// The condensed version of the current question that goes to the players
-// (sans answers and info that could be used to cheat.
 let questionForPlayers = null;
-
-// The server-local time the current question began.
 let questionStartTime = null;
-
-// The number of questions asked during the current game.
 let numberAsked = 0;
 
 
 
 function newGameData() {
-
   console.log("newGameData()");
 
   return { right : 0, wrong : 0, totalTime : 0, fastest : 999999999,
     slowest : 0, average : 0, points : 0, answered : 0, playerName : null
   };
-
 } 
 
 function calculateLeaderboard() {
-
   console.log("calculateLeaderboard()");
-
-  // Get our players into an array.
-  const playersArray = [ ];
   for (const playerID in players) {
     if (players.hasOwnProperty(playerID)) {
       const player = players[playerID];
@@ -65,25 +46,16 @@ function calculateLeaderboard() {
       return 0;
     }
   });
-
   return playersArray;
-
 }
 
 io.on("connection", io => {
-
-
   console.log("Connection established with a client");
-
   io.emit("connected", { });
 
-
   io.on("validatePlayer", inData => {
-
     try {
-
       console.log("validatePlayer", inData);
-
       const responseObject = { inProgress : inProgress,
         gameData : newGameData(), leaderboard : calculateLeaderboard(),
         asked : numberAsked
@@ -91,7 +63,7 @@ io.on("connection", io => {
       responseObject.gameData.playerName = inData.playerName;
 
       // First, give them an ID.
-      responseObject.playerID = `pi_${new Date().getTime()}`;
+      responseObject.playerID = `T24_${new Date().getTime()}`;
 
       // Now, make sure their name is unique.
       for (const playerID in players) {
@@ -101,25 +73,17 @@ io.on("connection", io => {
           }
         }
       }
-
-      // Finally, save their gameData object and emit response message.
       players[responseObject.playerID] = responseObject.gameData;
       io.emit("validatePlayer", responseObject);
-
-    // Handle any unexpected problems, ensuring the server doesn't go down.
     } catch (inException) {
       console.log(`${inException}`);
     }
-
   });
 
+
   io.on("submitAnswer", inData => {
-
     try {
-
       console.log("submitAnswer", inData);
-
-      // Get the gameData instance for this player.
       const gameData = players[inData.playerID];
 
       // By default, assume they answered wrong.
@@ -164,13 +128,13 @@ io.on("connection", io => {
     }
 
   });
+
+
   io.on("adminNewGame", () => {
 
     try {
 
       console.log("adminNewGame");
-
-      // Reset tracking variables
       question = null;
       questionForPlayers = null;
       numberAsked = 0;
@@ -206,84 +170,68 @@ io.on("connection", io => {
     }
 
   }); 
+
+
   io.on("adminNextQuestion", () => {
 
     try {
-
       console.log("adminNextQuestion");
-
       if (!inProgress) {
         io.emit("adminMessage", { msg : "There is no game in progress" });
         return;
       }
 
-      
       if (questions.length === 0) {
         io.emit("adminMessage", { msg : "There are no more questions" });
         return;
       }
 
-      
       for (const playerID in players) {
         if (players.hasOwnProperty(playerID)) {
           players[playerID].wrong++;
         }
       }
 
-     
       let choice = Math.floor(Math.random() * questions.length);
       question = questions.splice(choice, 1)[0];
 
-     
       questionForPlayers = { question : question.question, answers : [ ] };
 
-      
       const decoys = question.decoys.slice(0);
       for (let i = 0; i < 5; i++) {
         let choice = Math.floor(Math.random() * decoys.length);
         questionForPlayers.answers.push(decoys.splice(choice, 1)[0]);
       }
 
-      
       questionForPlayers.answers.push(question.answer);
 
-      
       questionForPlayers.answers = lodash.shuffle(questionForPlayers.answers);
 
-      
       numberAsked++;
 
       questionStartTime = new Date().getTime();
 
       io.broadcast.emit("nextQuestion", questionForPlayers);
 
-      
       io.emit("adminMessage", { msg : "Question in play" });
 
-    
     } catch (inException) {
       console.log(`${inException}`);
     }
-
   });
+
+
   io.on("adminEndGame", () => {
-
     try {
-
       console.log("adminEndGame");
-
-      
       if (!inProgress) {
         io.emit("adminMessage", { msg : "There is no game in progress" });
         return;
       }
 
-      
       const leaderboard = calculateLeaderboard();
-      
       io.broadcast.emit("endGame", { leaderboard : leaderboard });
 
-      
       inProgress = false;
       questions = null;
       question = null;
@@ -297,18 +245,12 @@ io.on("connection", io => {
           players[playerID].playerName = playerName;
         }
       }
-
       
       io.emit("adminMessage", { msg : "Game ended" });
-
-    
     } catch (inException) {
       console.log(`${inException}`);
     }
-
   }); 
-
-
 }); 
 
 console.log("Server ready");

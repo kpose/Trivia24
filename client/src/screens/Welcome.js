@@ -1,10 +1,11 @@
 import React from 'react';
+import { Text, StyleSheet } from "react-native";
 import LottieView from 'lottie-react-native';
 import styled from 'styled-components/native'; 
 
  
-const continueAnimation = require('../animations/continue.json');
-const animation = require('../animations/welcome.json')
+
+const animation = require('../animations/character.json')
 
 function  Welcome(props) {
   const { navigation } = props
@@ -14,20 +15,22 @@ function  Welcome(props) {
       <LottieView
         source={animation}
         autoPlay
-        style={{ width: 400, height: 300 }}
+        style={{ width: 400, height: 400 }}
         resizeMode="cover"
       />
     </AnimationView>
     <DescriptionView>
-      <IntroTitle>What do you rank?</IntroTitle>
-      <IntroText>This game allows you to compete with friends and all other relevant description. including timer functionality and leaderboard status.</IntroText>
+      <IntroTitle>How much do you know?</IntroTitle>
+      <IntroText>
+      Trivia24 will allow you run a trivia contest for a group of people. One person, the
+      admin, will be in control of when a new question is sent to the players. The players will 
+      then answer, and a leaderboard will be updated.
+      </IntroText>
+      <Text style={styles.introText} >
+        (Best enjoyed with three or more players)
+      </Text>
     </DescriptionView>
     <ShadowBox onPress={() => navigation.navigate('Home')}>
-        <LottieView
-            source={continueAnimation}
-            autoPlay
-            resizeMode="cover"
-        />
         <H1>Enter Game</H1>
      </ShadowBox>
   </Container>
@@ -56,9 +59,10 @@ export const AnimationView = styled.View`
 `;
 
 export const IntroTitle = styled.Text`
-  font-size: 24px;
+  font-size: 30px;
   text-align: center;
   padding: 16px;
+  font-weight: bold;
   line-height: 10px;
   color: #0D0E0E;
 `;
@@ -66,18 +70,19 @@ export const IntroTitle = styled.Text`
 export const DescriptionView = styled.View`
   flex: 1;
   justify-content: center;
-      padding-bottom: 32px;
+  padding-bottom: 32px;
   padding-left: 32px;
   padding-right: 32px;
 `;
 
 export const IntroText = styled.Text`
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 500;
   text-align: center;
   padding-top: 32px;
   line-height: 26px;
-  color: #EBD6EF;
+  color: #ffffff;
+  font-family: Cochin;
 `;
 
 export const H1 = styled.Text`
@@ -92,13 +97,24 @@ export const ShadowBox = styled.TouchableOpacity`
   height: 70px;
   width: 200px;
   border-color: #ddd;
-  background: #e6ebf0;
+  background: #B2E787;
   border-radius: 20px;
   shadow-opacity: 0.8;
   shadow-radius: 30px;
   justify-content: center;
   align-items: center;
 `;
+
+const styles = StyleSheet.create({
+  introText: {
+    fontFamily: "Cochin",
+    fontSize: 20,
+    fontWeight: "bold",
+    marginTop: 20,
+    color: "#b80f0f",
+    textAlign: 'center'    
+  },
+});
 
 
 

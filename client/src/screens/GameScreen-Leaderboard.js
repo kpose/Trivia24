@@ -117,10 +117,7 @@ class GameLeaderboardScreen extends React.Component {
         </View>
       </OuterContainer>
     );
-
   } 
-
-
 } 
 
 

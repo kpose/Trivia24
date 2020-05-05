@@ -7,8 +7,52 @@ import { answerButtonHighlight } from "../state/actions";
 import store from "../state/store";
 import styled from 'styled-components/native';
 
-class GameQuestionScreen extends React.Component {
 
+const styles = StyleSheet.create({
+  question : {
+    fontWeight : "bold",
+    fontSize : 26,
+    color : "#F1380F",
+    textAlign : "center"
+  },
+ 
+  answerButton : {
+    marginTop : 20
+  },
+
+  buttonText : {
+    fontWeight : "bold",
+    color : "white"
+  }
+});
+
+export const OuterContainer = styled.SafeAreaView`
+  flex: 1;
+  background-color: #1F2026;
+  align-items: stretch;
+  justify-content: center;
+`;
+
+export const QuestionContainer = styled.View`
+  flex: .2;
+  align-self: center;
+  justify-content: center;
+`;
+
+export const AnswerButtonsContainer = styled.View`
+  flex: .8;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const SubmitButtonContainer = styled.View`
+  height: 140px;
+  justify-content: center;
+`;
+ 
+
+
+class GameQuestionScreen extends React.Component {
   constructor(inProps) {
     super(inProps);
   }
@@ -131,46 +175,4 @@ const mapStateToProps = (inState) => {
 
 exports.GameQuestionScreen = connect(mapStateToProps)(GameQuestionScreen);
 
-
-const styles = StyleSheet.create({
-  question : {
-    fontWeight : "bold",
-    fontSize : 26,
-    color : "#F1380F",
-    textAlign : "center"
-  },
-
-  answerButton : {
-    marginTop : 20
-  },
-
-  buttonText : {
-    fontWeight : "bold",
-    color : "white"
-  }
-});
-
-export const OuterContainer = styled.SafeAreaView`
-  flex: 1;
-  background-color: #1F2026;
-  align-items: stretch;
-  justify-content: center;
-`;
-
-export const QuestionContainer = styled.View`
-  flex: .2;
-  align-self: center;
-  justify-content: center;
-`;
-
-export const AnswerButtonsContainer = styled.View`
-  flex: .8;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const SubmitButtonContainer = styled.View`
-  height: 140px;
-  justify-content: center;
-`;
 

@@ -1,11 +1,8 @@
 export default initialState = {
-
-    //data that the leaderboard screen
     leaderboard : {
       listData : [ ]
     },
-  
-    //information about current game
+
     gameData : {
       asked : "?????",
       answered : "?????",
@@ -25,7 +22,7 @@ export default initialState = {
       answerButtonLabels : [ null, null, null, null, null, null ],
       currentQuestion : null,
       selectedAnswer : -1
-    },
+    }, 
   
     //flags to determine which modal is showing
     modals : {
@@ -42,5 +39,4 @@ export default initialState = {
       id : null,
       name : null
     }
-  
   };
