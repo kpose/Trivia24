@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import CoreCode from "../../../src/CoreCode";
 
 
+
 export const OuterContainer = styled.SafeAreaView`
   flex: 1;
   align-items: center;

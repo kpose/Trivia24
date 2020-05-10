@@ -5,6 +5,7 @@ import { Button } from "native-base";
 import { connect } from "react-redux";
 import LottieView from 'lottie-react-native';
 import { showHideModal } from "../../state/actions";
+import store from "../../state/store";
 
 const firework = require('../../animations/firework.json');
 

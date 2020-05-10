@@ -11,10 +11,6 @@ import store from "../src/state/store";
 
 const CoreCode = {
 
-
-  // The IP address of the server.
-  //serverIP : "192.168.0.102",
-
   // Our Socket.io connection to the server.
   io : null,
 
@@ -202,6 +198,5 @@ const CoreCode = {
 
   }
 };
-
 
 export default CoreCode;
