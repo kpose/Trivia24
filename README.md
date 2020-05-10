@@ -3,7 +3,7 @@
 
 ## Screenshots
 
-![Welcome](https://user-images.githubusercontent.com/25622362/81503713-0b1b7d00-92dd-11ea-8d9c-b5c307d96c0f.PNG) ![Admin](https://user-images.githubusercontent.com/25622362/81503756-3bfbb200-92dd-11ea-8fe9-767a222f952f.PNG) ![Questions](https://user-images.githubusercontent.com/25622362/81503764-5b92da80-92dd-11ea-8103-d4db943f6e5b.PNG) ![Leaderboard](https://user-images.githubusercontent.com/25622362/81503781-79603f80-92dd-11ea-9fbf-809b3c81b085.PNG) ![EndGame](https://user-images.githubusercontent.com/25622362/81503820-b9272700-92dd-11ea-801e-caffd7c5877a.PNG)
+![Welcome](https://user-images.githubusercontent.com/25622362/81504162-9d248500-92df-11ea-8e5a-1dee2518cf3e.PNG) ![Admin](https://user-images.githubusercontent.com/25622362/81504196-cb09c980-92df-11ea-9761-5ff7fba10373.PNG) ![Questions](https://user-images.githubusercontent.com/25622362/81504229-ee347900-92df-11ea-932a-a6b51af97383.PNG) ![Leaderboard](https://user-images.githubusercontent.com/25622362/81504239-0efcce80-92e0-11ea-9c63-406a1d331fc9.PNG) ![EndGame](https://user-images.githubusercontent.com/25622362/81504259-33f14180-92e0-11ea-9ba0-386a3f178c25.PNG)
 
 
 ## Main technologies used
