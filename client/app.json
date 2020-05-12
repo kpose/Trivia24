@@ -3,7 +3,7 @@
     "name": "Trivia24",
     "slug": "Trivia24",
     "privacy": "public",
-    "description": "React Native Trivia",
+    "description": "Trivia24 is an iOS contest app built with React Native and Expo. This app will allow you to run a trivia contest for a group of people",
     "sdkVersion": "36.0.0",
     "platforms": [
       "ios",
@@ -12,7 +12,7 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/iconn.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
