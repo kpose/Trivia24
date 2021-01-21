@@ -10,6 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "lodash": "^4.17.15",
-    "socket.io": "2.1.1"
+    "socket.io": "2.4.0"
   }
 }
